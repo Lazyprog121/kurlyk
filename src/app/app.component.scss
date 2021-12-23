@@ -15,11 +15,24 @@
 
 .header-logo {
     width: 50px;
+    transition: transform 0.5s;
+
+    &:hover {
+        transform: rotate(360deg);
+        cursor: pointer;
+    }
 }
 
 .header-title-text {
     font-size: 30px;
     font-weight: 600;
+    transition: font-size 0.5s, color 0.5s;
+
+    &:hover {
+        font-size: 34px;
+        color: black;
+        cursor: pointer;
+    }
 }
 
 .main-container {
