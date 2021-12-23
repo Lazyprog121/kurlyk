@@ -13,24 +13,33 @@
 <mat-sidenav-container class="main-container">
   <mat-sidenav class="navbar" mode="side" opened>
     <div class="navbar-link-container" [style.color]="colorFirst">
-      <a class="navbar-link" routerLink="home">
+      <a class="navbar-link" routerLink="signin" *ngIf="!userIsAuthorized()">
+        Sign In
+      </a>
+      <a class="navbar-link" routerLink="signup" *ngIf="!userIsAuthorized()">
+        Sign Up
+      </a>
+      <a class="navbar-link" routerLink="home" *ngIf="userIsAuthorized()">
         Home
       </a>
-      <a class="navbar-link" routerLink="profile">
+      <a class="navbar-link" routerLink="profile" *ngIf="userIsAuthorized()">
         Profile
       </a>
-      <a class="navbar-link" routerLink="chats">
+      <a class="navbar-link" routerLink="chats" *ngIf="userIsAuthorized()">
         Chats
       </a>
-      <a class="navbar-link" routerLink="contacts">
+      <a class="navbar-link" routerLink="contacts" *ngIf="userIsAuthorized()">
         Contacts
+      </a>
+      <a class="navbar-link" routerLink="signin" *ngIf="userIsAuthorized()">
+        Sign Out
       </a>
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <div class="content">
-      <router-outlet ></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
