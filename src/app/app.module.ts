@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+
 import { HomeComponent } from './home/home.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -36,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
