@@ -1,20 +1,19 @@
 <mat-sidenav-container class="main-container">
   <mat-sidenav class="navbar" mode="side" opened>
     <div class="navbar-link-container">
-      <a class="navbar-link" href="#">
+      <a class="navbar-link" routerLink="/">
         Home
       </a>
-      <a class="navbar-link" href="#">
+      <a class="navbar-link" routerLink="/">
         Chat
       </a>
-      <a class="navbar-link" href="#">
+      <a class="navbar-link" routerLink="/">
         Contacts
       </a>
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <!-- <router-outlet></router-outlet> -->
-    test
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
