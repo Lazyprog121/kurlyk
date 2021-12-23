@@ -16,6 +16,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSidenavModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

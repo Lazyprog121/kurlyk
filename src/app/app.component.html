@@ -31,7 +31,7 @@
       <a class="navbar-link" routerLink="contacts" *ngIf="userIsAuthorized()">
         Contacts
       </a>
-      <a class="navbar-link" routerLink="signin" *ngIf="userIsAuthorized()">
+      <a class="navbar-link" routerLink="signin" *ngIf="userIsAuthorized()" (click)="signOut()">
         Sign Out
       </a>
     </div>

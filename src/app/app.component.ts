@@ -22,4 +22,8 @@ export class AppComponent implements OnInit {
   userIsAuthorized(): boolean {
     return this.authService.getAuthorizedUserId() != undefined;
   }
+
+  signOut() {
+    this.authService.signOut();
+  }
 }
