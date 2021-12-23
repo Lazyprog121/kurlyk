@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorizationService } from './services/authorization.service';
 import { ColorsService } from './services/colors.service';
 
 @Component({
@@ -11,11 +12,14 @@ export class AppComponent implements OnInit {
   public colorFirst!: string;
   public colorSecond!: string;
 
-  constructor(private colorsService: ColorsService) { }
+  constructor(private colorsService: ColorsService,
+    private authService: AuthorizationService) { }
 
   ngOnInit(): void {
     this.colorFirst = this.colorsService.getColorsForCurrentUser()[0];
   }
 
-
+  userIsAuthorized(): boolean {
+    return this.authService.getAuthorizedUserId() != undefined;
+  }
 }
