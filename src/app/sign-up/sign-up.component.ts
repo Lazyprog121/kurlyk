@@ -29,6 +29,6 @@ export class SignUpComponent implements OnInit {
 
   createUser() {
     this.authService.signIn(1);
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 }
