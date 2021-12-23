@@ -1,7 +1,8 @@
 .main-container {
     margin: 50px auto;
+    padding-bottom: 20px;
     width: 80%;
-    height: 80%;
+    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     border-radius: 10px;
 }
@@ -11,7 +12,7 @@
 }
 
 .navbar-link-container {
-    padding: 20px 30px 30px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,8 +21,8 @@
 .navbar-link {
     text-decoration: none;
     font-size: 18px;
-    // color: black;
     margin-bottom: 20px;
+    color: inherit;
 
     &:hover {
         text-decoration: underline;
@@ -30,4 +31,8 @@
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+.content {
+    padding: 30px;
 }
