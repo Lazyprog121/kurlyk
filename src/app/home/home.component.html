@@ -1,12 +1,12 @@
 <div class="home">
-    <h1 class="home-title">
+    <h1 class="home-title" [style.color]="colorFirst">
         Here you can find a lot of things that might entertain you
     </h1>
 
     <div class="home-cards">
         <mat-card class="home-card" routerLink="profile">
             <img mat-card-image class="home-card-image" src="assets/home-set-up-avatar.png">
-            <mat-card-title>
+            <mat-card-title [style.color]="colorSecond">
                 Set up avatar
             </mat-card-title>
             <mat-card-content class="home-card-content">
@@ -15,7 +15,7 @@
         </mat-card>
         <mat-card class="home-card" routerLink="chats">
             <img mat-card-image class="home-card-image" src="assets/home-send-message.png">
-            <mat-card-title>
+            <mat-card-title [style.color]="colorSecond">
                 Send message
             </mat-card-title>
             <mat-card-content class="home-card-content">
@@ -24,7 +24,7 @@
         </mat-card>
         <mat-card class="home-card" routerLink="contacts">
             <img mat-card-image class="home-card-image" src="assets/home-make-friends.png">
-            <mat-card-title>
+            <mat-card-title [style.color]="colorSecond">
                 Make friends
             </mat-card-title>
             <mat-card-content class="home-card-content">

@@ -20,11 +20,11 @@
 
 .profile-image {
     width: 250px;
-    box-shadow: 0px 0px 31px 7px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 31px 7px;
     border-radius: 30px;
 
     &:hover {
-        box-shadow: 0px 0px 31px 15px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 31px 15px;
     }
 }
 

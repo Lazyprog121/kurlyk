@@ -1,6 +1,6 @@
 <div class="profile">
     <div class="profile-data">
-        <img src="assets/profile-photo.jpg" alt="" class="profile-image">
+        <img src="assets/profile-photo.jpg" alt="" class="profile-image" [style.color]="colorSecond">
         <span *ngIf="!edit" class="profile-data-text">
             Name:
             <span class="profile-data-value">
@@ -45,11 +45,11 @@
             <input matInput type="email" [formControl]="getControl('email')">
         </mat-form-field>
 
-        <button *ngIf="!edit" mat-raised-button (click)="editProfile()">Edit</button>
-        <button *ngIf="edit" mat-raised-button (click)="saveProfile()" [disabled]="!userForm.valid">Save</button>
+        <button *ngIf="!edit" mat-raised-button (click)="editProfile()" [style.color]="colorSecond">Edit</button>
+        <button *ngIf="edit" mat-raised-button (click)="saveProfile()" [disabled]="!userForm.valid" [style.color]="colorSecond">Save</button>
     </div>
 
-    <h1 class="profile-title">
+    <h1 class="profile-title" [style.color]="colorFirst">
         It's you!
     </h1>
 </div>
