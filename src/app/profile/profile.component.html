@@ -1,1 +1,55 @@
-<p>profile works!</p>
+<div class="profile">
+    <div class="profile-data">
+        <img src="assets/profile-photo.jpg" alt="" class="profile-image">
+        <span *ngIf="!edit" class="profile-data-text">
+            Name:
+            <span class="profile-data-value">
+                {{ user.name }}            
+            </span>
+        </span>
+        <mat-form-field *ngIf="edit" class="profile-data-input" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput [formControl]="getControl('name')">
+        </mat-form-field>
+
+        <span *ngIf="!edit" class="profile-data-text">
+            Surname:
+            <span class="profile-data-value">
+                {{ user.surname }}            
+            </span>
+        </span>
+        <mat-form-field *ngIf="edit" class="profile-data-input" appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input matInput [formControl]="getControl('surname')">
+        </mat-form-field>
+
+        <span *ngIf="!edit" class="profile-data-text">
+            Age:
+            <span class="profile-data-value">
+                {{ user.age }}            
+            </span>
+        </span>
+        <mat-form-field *ngIf="edit" class="profile-data-input" appearance="fill">
+            <mat-label>Age</mat-label>
+            <input matInput type="number" min="6" [formControl]="getControl('age')">
+        </mat-form-field>
+
+        <span *ngIf="!edit" class="profile-data-text">
+            Email:
+            <span class="profile-data-value">
+                {{ user.email }}            
+            </span>
+        </span>
+        <mat-form-field *ngIf="edit" class="profile-data-input" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [formControl]="getControl('email')">
+        </mat-form-field>
+
+        <button *ngIf="!edit" mat-raised-button (click)="editProfile()">Edit</button>
+        <button *ngIf="edit" mat-raised-button (click)="saveProfile()" [disabled]="!userForm.valid">Save</button>
+    </div>
+
+    <h1 class="profile-title">
+        It's you!
+    </h1>
+</div>
