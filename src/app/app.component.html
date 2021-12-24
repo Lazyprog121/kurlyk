@@ -12,26 +12,26 @@
 
 <mat-sidenav-container class="main-container">
   <mat-sidenav class="navbar" mode="side" opened>
-    <div class="navbar-link-container" [style.color]="colorFirst">
-      <a class="navbar-link" routerLink="signin" *ngIf="!userIsAuthorized()">
+    <div class="navbar-link-container">
+      <a class="navbar-link" routerLink="signin" *ngIf="!userIsAuthorized()" [style.color]="colorFirst">
         Sign In
       </a>
-      <a class="navbar-link" routerLink="signup" *ngIf="!userIsAuthorized()">
+      <a class="navbar-link" routerLink="signup" *ngIf="!userIsAuthorized()" [style.color]="colorFirst">
         Sign Up
       </a>
-      <a class="navbar-link" routerLink="home" *ngIf="userIsAuthorized()">
+      <a class="navbar-link" routerLink="home" *ngIf="userIsAuthorized()" [style.color]="colorFirst">
         Home
       </a>
-      <a class="navbar-link" routerLink="profile" *ngIf="userIsAuthorized()">
+      <a class="navbar-link" routerLink="profile" *ngIf="userIsAuthorized()" [style.color]="colorFirst">
         Profile
       </a>
-      <a class="navbar-link" routerLink="chats" *ngIf="userIsAuthorized()">
+      <a class="navbar-link" routerLink="chats" *ngIf="userIsAuthorized()" [style.color]="colorFirst">
         Chats
       </a>
-      <a class="navbar-link" routerLink="contacts" *ngIf="userIsAuthorized()">
+      <a class="navbar-link" routerLink="contacts" *ngIf="userIsAuthorized()" [style.color]="colorFirst">
         Contacts
       </a>
-      <a class="navbar-link" routerLink="signin" *ngIf="userIsAuthorized()" (click)="signOut()">
+      <a class="navbar-link" routerLink="signin" *ngIf="userIsAuthorized()" (click)="signOut()" [style.color]="colorFirst">
         Sign Out
       </a>
     </div>

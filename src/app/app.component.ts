@@ -7,7 +7,7 @@ import { ColorsService } from './services/colors.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit  {
   public title: string = 'kurlyk';
   public colorFirst!: string;
   public colorSecond!: string;
@@ -17,13 +17,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.colorFirst = this.colorsService.getColorsForCurrentUser()[0];
-
-    this.colorsService.colorChanged$.subscribe(color => {
-      this.colorFirst = color;
-    })
   }
-
+  
   userIsAuthorized(): boolean {
+    this.colorFirst = this.colorsService.getColorsForCurrentUser()[0];
     return this.authService.getAuthorizedUserId() != undefined;
   }
 

@@ -11,7 +11,8 @@ export class DataService {
 
   constructor() {
     this.users = [
-      { id: 0, name: 'Artur', surname: 'Sod', age: 19, email: 'a', password: 'a' }
+      { id: 0, name: 'Artur', surname: 'Sod', age: 19, email: 'a', password: 'a' },
+      { id: 1, name: 'Dania', surname: 'Kotia', age: 10, email: 'dania_kotiai@gmail.com', password: '12345678' },
     ];
   }
 

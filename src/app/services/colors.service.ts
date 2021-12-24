@@ -8,8 +8,6 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class ColorsService {
-  colorChanged$: Subject<string> = new Subject<string>();
-
   constructor(private constants: AppConstants,
     private dataService: DataService,
     private authorizationService: AuthorizationService) { }
@@ -20,14 +18,10 @@ export class ColorsService {
 
     if (age < 18) {
       return [this.constants.childFirst, this.constants.childSecond];
-    } else if (age < 45) {
-      return [this.constants.youngFirst, this.constants.youngSecond];
-    } else {
+    } else if (age > 45) {
       return [this.constants.oldFirst, this.constants.oldSecond];
+    } else {
+      return [this.constants.youngFirst, this.constants.youngSecond];
     }
-  }
-
-  setColor(color: string): void {
-    this.colorChanged$.next(color);
   }
 }
