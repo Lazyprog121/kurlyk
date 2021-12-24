@@ -1,5 +1,5 @@
-import { KeyValue } from '@angular/common';
 import { Injectable } from '@angular/core';
+import { Chat, ChatToMessage, Message } from '../models/chat';
 import { User } from '../models/user';
 
 @Injectable({
@@ -7,6 +7,9 @@ import { User } from '../models/user';
 })
 export class DataService {
   private users: User[];
+  private chats: Chat[];
+  private messages: Message[];
+  private chatsToMessages: ChatToMessage[];
 
 
   constructor() {
@@ -14,6 +17,9 @@ export class DataService {
       { id: 0, name: 'Artur', surname: 'Sod', age: 19, email: 'a', password: 'a' },
       { id: 1, name: 'Dania', surname: 'Kotia', age: 10, email: 'dania_kotiai@gmail.com', password: '12345678' },
     ];
+    this.chats = [];
+    this.messages = [];
+    this.chatsToMessages = [];
   }
 
   createUser(user: User): number {
@@ -34,5 +40,11 @@ export class DataService {
 
   getUserAge(id: number): number | undefined {
     return this.users.find(x => x.id === id)?.age;
+  }
+
+  createChat(firstUserId: number, secondUserId: number): number {
+    const id = this.chats.length;
+    this.chats.push({ id: id, firstUserId: firstUserId, secondUserId: secondUserId });
+    return id;
   }
 }
