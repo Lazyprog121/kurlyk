@@ -15,7 +15,7 @@ export class AuthorizationService {
     private router: Router,
     private constants: AppConstants,
     private colorsService: ColorsService) { 
-    this.authorizedUserId = undefined;
+    this.authorizedUserId = 0;
   }
 
   getAuthorizedUserId(): number | undefined {

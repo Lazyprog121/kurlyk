@@ -11,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ContactsComponent } from './contacts/contacts.component';
-import { ChatComponent } from './chats/chat/chat.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -19,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -28,10 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ChatsComponent,
     ContactsComponent,
-    ChatComponent,
     ProfileComponent,
     SignUpComponent,
     SignInComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
