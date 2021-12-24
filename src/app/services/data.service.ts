@@ -30,4 +30,8 @@ export class DataService {
   getUserId(email: string): number | undefined {
     return this.users.find(x => x.email === email)?.id;
   }
+
+  getUserAge(id: number): number | undefined {
+    return this.users.find(x => x.id === id)?.age;
+  }
 }

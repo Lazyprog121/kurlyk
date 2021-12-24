@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.colorFirst = this.colorsService.getColorsForCurrentUser()[0];
+
+    this.colorsService.colorChanged$.subscribe(color => {
+      this.colorFirst = color;
+    })
   }
 
   userIsAuthorized(): boolean {
