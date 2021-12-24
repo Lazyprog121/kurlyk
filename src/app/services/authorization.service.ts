@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,8 @@ import { Observable, of } from 'rxjs';
 export class AuthorizationService {
   private authorizedUserId: number | undefined;
 
-  constructor() { 
+  constructor(private dataService: DataService,
+    private router: Router) { 
     this.authorizedUserId = undefined;
   }
 
@@ -19,8 +22,15 @@ export class AuthorizationService {
     return of(this.authorizedUserId !== undefined);
   }
 
-  signIn(usedId: number): void {
-    this.authorizedUserId = usedId;
+  signIn(email: string, password: string): boolean {
+    const currentPassword = this.dataService.getUserPassword(email);
+    if (currentPassword && currentPassword === password) {
+      this.authorizedUserId = this.dataService.getUserId(email);
+      this.router.navigate(['/home']);
+      return true;
+    }
+
+    return false;
   }
 
   signOut(): void {
