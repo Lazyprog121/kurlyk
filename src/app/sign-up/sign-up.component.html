@@ -1,24 +1,50 @@
 <p><b>Registration</b></p>
 <div style="display: flex;">
-    <div style="width: 220px; display: flex; height: 75px; flex-direction: column; justify-content: space-between;">
-        <mat-form-field appearance="outline">
-            <input matInput type="text" required placeholder="Name">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <input matInput type="text" required placeholder="Surname">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <input matInput type="number" required placeholder="Age">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <input matInput type="email" required placeholder="Email">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <input matInput type="password" required placeholder="Password">
-         </mat-form-field>
-         <mat-form-field appearance="outline">
-            <input matInput type="password" required placeholder="Confirm password">
-         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="createUser()">Sign Up</button>
+    <div style="width: 300px; display: flex; height: 75px; flex-direction: column; justify-content: space-between;">
+        <form [formGroup]="userForm">
+            <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="name" required placeholder="Name">
+                <mat-error *ngIf="form['name'].invalid">
+                    {{requiredErrorMessage}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput type="text" formControlName="surname" required placeholder="Surname">
+                <mat-error *ngIf="form['surname'].invalid">
+                    {{requiredErrorMessage}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput type="number" formControlName="age" required placeholder="Age">
+                <mat-error *ngIf="form['age'].invalid">
+                    {{requiredErrorMessage}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput type="email" formControlName="email" required placeholder="Email">
+                <mat-error *ngIf="form['email'].invalid">
+                    {{requiredErrorMessage}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput type="password" formControlName="password" required placeholder="Password">
+                <mat-error *ngIf="form['password'].invalid">
+                    {{requiredErrorMessage}}
+                </mat-error>
+             </mat-form-field>
+             <mat-form-field appearance="outline">
+                <input matInput type="password" formControlName="confirmPassword" required placeholder="Confirm password">
+                <mat-error *ngIf="form['confirmPassword'].invalid">
+                    {{form['confirmPassword'].errors?.['passwordsDoNotMatch'] === true
+                        ? passwordsDontWatchErrorMessage
+                        : requiredErrorMessage}}
+                </mat-error>
+             </mat-form-field>
+             <br>
+            <button mat-stroked-button color="primary" (click)="createUser()" [disabled]="userForm.invalid"
+                style="margin-top: 20px;">
+                Sign Up
+            </button>
+        </form>        
     </div>
 </div>
