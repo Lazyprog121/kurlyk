@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user';
+import { AuthorizationService } from '../services/authorization.service';
 import { ColorsService } from '../services/colors.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +11,7 @@ import { ColorsService } from '../services/colors.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public user = {
-    name: "Ivan",
-    surname: "Ivanovych",
-    age: 13,
-    email: "customivan@gmail.com"
-  }
+  public user!: User;
 
   public userForm!: FormGroup;
   public edit: boolean = false;
@@ -22,9 +19,17 @@ export class ProfileComponent implements OnInit {
   public colorFirst!: string;
   public colorSecond!: string;
 
-  constructor(private fb: FormBuilder, private colorsService: ColorsService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private colorsService: ColorsService, 
+    private dataService: DataService,
+    private authorizationService: AuthorizationService
+    ) { }
 
   ngOnInit(): void {
+    const userId = this.authorizationService.getAuthorizedUserId() as number;
+    this.user = this.dataService.getUser(userId) as User;
+
     this.userForm = this.fb.group({
       name: [this.user.name, [Validators.required]],
       surname: [this.user.surname, [Validators.required]],
