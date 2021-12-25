@@ -1,5 +1,5 @@
 <mat-selection-list [multiple]="false">
-    <mat-list-option *ngFor="let chat of chats" (click)="openChat(chat.chatId)" style="border: 1px solid black;">
+    <mat-list-option *ngFor="let chat of chats" (click)="openChat(chat.chatId)" style="border: 1px solid;" [style.border-color]="colorFirst">
         <div>
             <div style="display: flex; justify-content: space-between;">
                 <span>
