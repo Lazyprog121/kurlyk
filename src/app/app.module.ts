@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component';
 import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -44,7 +45,8 @@ import {MatListModule} from '@angular/material/list';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

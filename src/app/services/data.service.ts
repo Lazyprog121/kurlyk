@@ -17,7 +17,8 @@ export class DataService {
   constructor() {
     this.users = [
       { id: 0, name: 'Artur', surname: 'Sod', age: 19, email: 'a', password: 'a' },
-      { id: 1, name: 'Danya', surname: 'Kot', age: 20, email: 'b', password: 'a' }
+      { id: 1, name: 'Danya', surname: 'Kot', age: 20, email: 'b', password: 'a' },
+      { id: 2, name: 'a', surname: 'a', age: 20, email: 'c', password: 'a' },
     ];
     this.chats = [
       { id: 0 },
@@ -31,12 +32,23 @@ export class DataService {
     this.messages = [
       { id: 0, userId: 1, message: 'Hi Artur!', date: new Date() },
       { id: 1, userId: 0, message: 'Hi Danya!', date: new Date() },
-      { id: 2, userId: 1, message: "What's up!", date: new Date() }
+      { id: 2, userId: 1, message: "What's up!", date: new Date() },
+      { id: 3, userId: 0, message: "a", date: new Date() },
+      { id: 4, userId: 0, message: "a", date: new Date() },
+      { id: 5, userId: 0, message: "a", date: new Date() },
+      { id: 6, userId: 0, message: "a", date: new Date() },
+      { id: 7, userId: 0, message: "a", date: new Date() },
+
     ];
     this.chatsToMessages = [
       { chatId: 0, messageId: 0 },
       { chatId: 0, messageId: 1 },
-      { chatId: 0, messageId: 2 }
+      { chatId: 0, messageId: 2 },
+      { chatId: 0, messageId: 3 },
+      { chatId: 0, messageId: 4 },
+      { chatId: 0, messageId: 5 },
+      { chatId: 0, messageId: 6 },
+      { chatId: 0, messageId: 7 }
     ];
   }
 
@@ -69,13 +81,12 @@ export class DataService {
 
     this.chats.push({ id: chatId });
     userIds.forEach(userId => {
-      this.chatsToUsers.push({ chatId: chatId, userId: userId });
+      this.chatsToUsers.push({ userId: userId, chatId: chatId });
     })
     return chatId;
   }
 
-  getUserChats(userId: number): ChatViewModel[] 
-  {
+  getUserChats(userId: number): ChatViewModel[] {
     const chatIds = this.chatsToUsers
       .filter(x => x.userId === userId)
       .map(x => x.chatId);
@@ -116,7 +127,7 @@ export class DataService {
         }
       });
     }
-    
+
     return result;
   }
 
@@ -131,5 +142,33 @@ export class DataService {
       return companion;
     }
     return undefined;
+  }
+
+  getChatId(currentUserId: number, userId: number): number | undefined {
+    const chatIds = this.chatsToUsers.filter(x => x.userId === currentUserId).map(x => x.chatId);
+    for (let i = 0; i < chatIds.length; i++) {
+      const chatId = chatIds[i];
+      const chat = this.chatsToUsers.find(x => x.chatId === chatId && x.userId === userId);
+      if (chat != undefined) {
+        return chat.chatId;
+      }
+    }
+    return undefined;
+  }
+
+  createMessage(chatId: number, userId: number, message: string, date: Date): number {
+    const id = this.messages.length;
+    this.messages.push({
+      id: id,
+      userId: userId,
+      message: message,
+      date: date
+    });
+    this.chatsToMessages.push({
+      chatId: chatId,
+      messageId: id
+    });
+
+    return id;
   }
 }
