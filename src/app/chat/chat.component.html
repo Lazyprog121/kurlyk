@@ -1,19 +1,19 @@
-<div class="chat">
-    <div class="chat-item" *ngFor="let message of messages">
-        <span class="chat-text">
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.asdsada sdasdd ddddddddddddddddd
-            asdsad
-            sa
-            a
-            sd_cardsadas
-            asd
-            <br>
-            <!-- <span>{{message.date | date:'short'}}</span> -->
-        </span>
-        <!-- <p style="display:block;float: right;">
-            {{message.date | date:'short'}}
-        </p> -->
+<div class="chat" *ngIf="chatCompanion">
+    <div style="margin-bottom: 30px; border-bottom: 2px solid black; height: 40px; font-size: 27px; font-weight: bold;">
+        {{chatCompanion.name + ' ' + chatCompanion.surname}}
+    </div>
+    <div *ngFor="let message of messages" style="width: 100%; display: inline-block;">
+        <div class="chat-item" [style.float]="message.userId === currentUserId ? 'right' : 'left'">
+            <p class="chat-text">
+                {{message.message}}
+                <br>
+                <span style="float: right;margin-top: 5px; font-size: 13px;">{{message.date | date:'short'}}</span>
+            </p>            
+        </div>
+    </div>
+    <div style="position: absolute; bottom: 0; width: 100%;">
+        <mat-form-field appearance="outline" style="width: 80%;">
+            <input matInput type="text" placeholder="Write a message...">
+        </mat-form-field>
     </div>
 </div>

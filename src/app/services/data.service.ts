@@ -27,10 +27,14 @@ export class DataService {
       { userId: 1, chatId: 0 }
     ];
     this.messages = [
-      { id: 0, userId: 1, message: 'Test message.', date: new Date() }
+      { id: 0, userId: 1, message: 'Hi Artur!', date: new Date() },
+      { id: 1, userId: 0, message: 'Hi Danya!', date: new Date() },
+      { id: 2, userId: 1, message: "What's up!", date: new Date() }
     ];
     this.chatsToMessages = [
-      { chatId: 0, messageId: 0 }
+      { chatId: 0, messageId: 0 },
+      { chatId: 0, messageId: 1 },
+      { chatId: 0, messageId: 2 }
     ];
   }
 
@@ -112,5 +116,14 @@ export class DataService {
     }
     
     return result;
+  }
+
+  getChatCompanion(chatId: number, currentUserId: number): User | undefined {
+    const companionId = this.chatsToUsers.find(x => x.chatId === chatId && x.userId !== currentUserId)?.userId;
+    if (companionId != undefined) {
+      const companion = this.users.find(x => x.id === companionId)
+      return companion;
+    }
+    return undefined;
   }
 }

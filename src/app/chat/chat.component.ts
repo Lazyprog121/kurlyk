@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/chat';
+import { User } from '../models/user';
+import { AuthorizationService } from '../services/authorization.service';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -11,21 +13,39 @@ import { DataService } from '../services/data.service';
 export class ChatComponent implements OnInit {
   chatId: number;;
   messages: Message[];
+  currentUserId: number;
+  chatCompanion: User | undefined;
 
   constructor(private dataService: DataService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private authService: AuthorizationService) {
     this.messages = [];
     this.chatId = 0;
+    this.currentUserId = 0;
+    this.chatCompanion = undefined;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.chatId = Number(params['id']);
       this.loadMessages(this.chatId);
+      this.loadCurrentUserId();
+      this.loadCompanion();
     });
   }
 
   loadMessages(chatId: number) {
     this.messages = this.dataService.getChatMessages(chatId);
+  }
+
+  loadCurrentUserId() {
+    const id = this.authService.getAuthorizedUserId();
+    if(id) {
+      this.currentUserId = id;
+    }
+  }
+
+  loadCompanion() {
+    this.chatCompanion = this.dataService.getChatCompanion(this.chatId, this.currentUserId);
   }
 }
