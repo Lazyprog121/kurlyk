@@ -15,6 +15,8 @@ export class SignUpComponent implements OnInit {
   passwordsDontWatchErrorMessage = 'Password and confirm password do not match.';
   userForm!: FormGroup;
 
+  private userCounter: number = 2;
+
   constructor(private fb: FormBuilder,
     private authService: AuthorizationService,
     private router: Router,
@@ -56,13 +58,15 @@ export class SignUpComponent implements OnInit {
 
   createUser(): void {
     const user: User = {
-      id: 0,
+      id: this.userCounter,
       name: this.form['name'].value,
       surname: this.form['surname'].value,
       age: this.form['age'].value,
       email: this.form['email'].value,
       password: this.form['password'].value,
     }
+
+    this.userCounter++;
 
     const id = this.dataService.createUser(user);
     this.router.navigate(['/signin']);

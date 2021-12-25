@@ -41,6 +41,10 @@ export class DataService {
     return id;
   }
 
+  getUser(userId: number): User | undefined {
+    return this.users.find(x => x.id === userId);
+  }
+
   getUserPassword(email: string): string | undefined {
     const user = this.users.find(x => x.email === email);
     return user?.password;
