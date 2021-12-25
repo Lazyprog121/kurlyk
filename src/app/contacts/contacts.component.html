@@ -1,1 +1,8 @@
-<p>contacts works!</p>
+<div class="contacts">
+    <div class="contacts-item" *ngFor="let contact of contacts">
+        <span class="contacts-item-name">
+            {{ contact.name }}
+        </span>
+        <button mat-raised-button (click)="openChat(contact.chatId)">Chat</button>
+    </div>
+</div>
