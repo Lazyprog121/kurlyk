@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatViewModel } from '../models/chatViewModel';
 import { AuthorizationService } from '../services/authorization.service';
+import { ColorsService } from '../services/colors.service';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -12,14 +13,21 @@ import { DataService } from '../services/data.service';
 export class ChatsComponent implements OnInit {
   chats: ChatViewModel[];
 
+  public colorFirst!: string;
+  public colorSecond!: string;
+
   constructor(private dataService: DataService,
     private authService: AuthorizationService,
-    private router: Router) {
+    private router: Router,
+    private colorsService: ColorsService) {
     this.chats = [];
   }
 
   ngOnInit(): void {
     this.loadChats();
+
+    this.colorFirst = this.colorsService.getColorsForCurrentUser()[0];
+    this.colorSecond = this.colorsService.getColorsForCurrentUser()[1];
   }
 
   loadChats() {

@@ -1,8 +1,8 @@
 <div class="contacts">
-    <div class="contacts-item" *ngFor="let contact of contacts">
+    <div class="contacts-item" *ngFor="let contact of contacts" [style.border-color]="colorFirst">
         <span class="contacts-item-name">
             {{ contact.name }}
         </span>
-        <button mat-raised-button (click)="openChat(contact.id)">Chat</button>
+        <button mat-raised-button (click)="openChat(contact.id)" [style.color]="colorSecond">Chat</button>
     </div>
 </div>
