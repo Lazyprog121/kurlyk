@@ -7,11 +7,13 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'chats', component: ChatsComponent, canActivate: [AuthGuard] },
+  { path: 'chats/:id', component: ChatComponent, canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },

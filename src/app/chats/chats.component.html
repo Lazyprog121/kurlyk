@@ -1,1 +1,17 @@
-<p>chats works!</p>
+<mat-selection-list [multiple]="false">
+    <mat-list-option *ngFor="let chat of chats" (click)="openChat(chat.chatId)" style="border: 1px solid black;">
+        <div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>
+                    <b>{{chat.userFullName}}</b>
+                </span>
+                <span>
+                    {{chat.date | date:'short'}}
+                </span>
+            </div>
+            <div style="margin-top: 5px;">
+                {{chat.message}}
+            </div>
+        </div>
+    </mat-list-option>
+</mat-selection-list>

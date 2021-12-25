@@ -11,8 +11,9 @@ import { DataService } from './data.service';
 export class AuthorizationService {
   private authorizedUserId: number | undefined;
 
-  constructor(private dataService: DataService, private router: Router) { 
-    this.authorizedUserId = undefined;
+  constructor(private dataService: DataService, 
+    private router: Router) { 
+    this.authorizedUserId = 0;
   }
 
   getAuthorizedUserId(): number | undefined {

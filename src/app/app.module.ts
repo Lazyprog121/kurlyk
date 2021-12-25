@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -42,7 +43,8 @@ import { ChatComponent } from './chat/chat.component';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

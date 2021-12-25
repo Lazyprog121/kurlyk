@@ -1,11 +1,16 @@
+
 export interface Chat {
     id: number;
-    firstUserId: number;
-    secondUserId: number;
+}
+
+export interface UserToChat {
+    userId: number;
+    chatId: number;
 }
 
 export interface Message {
     id: number;
+    userId: number;
     message: string;
     date: Date;
 }
