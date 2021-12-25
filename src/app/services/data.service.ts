@@ -20,7 +20,9 @@ export class DataService {
       { id: 1, name: 'Danya', surname: 'Kot', age: 20, email: 'b', password: 'a' }
     ];
     this.chats = [
-      { id: 0 }
+      { id: 0 },
+      { id: 1 },
+      { id: 2 }
     ];
     this.chatsToUsers = [
       { userId: 0, chatId: 0 },
@@ -116,6 +118,10 @@ export class DataService {
     }
     
     return result;
+  }
+
+  getUsersWithoutOne(userId: number): User[] {
+    return this.users.filter(x => x.id !== userId);
   }
 
   getChatCompanion(chatId: number, currentUserId: number): User | undefined {
